@@ -1,0 +1,48 @@
+class <%= @controller_class %>Controller < ApplicationController
+  unloadable
+
+  before_filter :find_<%= @model_bf %>, :only => [ :destroy, :edit, :update ]
+  before_filter :build_<%= @model_bf %>_from_params, :only => [ :new, :create ]
+
+  def new
+  end
+
+  def create
+    if @<%= @model_bf %>.save
+      flash[:notice] = l(:notice_successful_create)
+    else
+      render :action => 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @<%= @model_bf %>.update_attributes(params[:<%= @model_bf %>])
+      flash[:notice] = l(:notice_successful_create)
+    else
+      render :action => 'edit'
+    end
+  end
+
+  def destroy
+    @<%= @model_bf %>.destroy
+  end
+
+  private
+
+  def find_<%= @model_bf %>
+    @<%= @model_bf %> = <%= @model_class %>.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    render_404
+  end
+
+  def build_<%= @model_bf %>_from_params
+    if params[:<%= @model_bf %>]
+      @<%= @model_bf %> = <%= @model_class %>.new params[:<%= @model_bf %>]
+    else
+      @<%= @model_bf %> = <%= @model_class %>.new
+    end
+  end
+end

@@ -1,0 +1,5 @@
+Description:
+    Generates a plugin controller and models.
+
+Example:
+    ./script/rails generate redmine_plugin_scaffolds meetings pool votes:integer question:string

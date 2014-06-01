@@ -1,0 +1,11 @@
+<%= "\<\%\= error_messages_for '#{@model_bf}' \%\>" %>
+
+<div class="box tabular">
+  <% attributes.each do |attribute| -%>
+  <p><% if attribute.type == 'boolean' -%>
+      <%= "\<\%\= f.check_box :#{attribute.name} \%\>" %><% else -%>
+        <%= "\<\%\= f.text_field :#{attribute.name} \%\>" %><% end -%>
+  </p>
+  <% end -%>
+</div>
+

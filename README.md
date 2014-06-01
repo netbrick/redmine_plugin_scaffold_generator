@@ -1,4 +1,14 @@
-redmine_plugin_scaffold_generator
-=================================
+# Redmine Plugin Scaffold generator
 
-Redmine plugin scaffold generator - port standart scaffold generator from rails into redmine plugin
+## Usage
+
+```
+ruby script/rails redmine_plugin_scaffold polls PoolQuestions name:string description:string
+```
+
+## Generate
+
+* Migration
+* Model
+* Controller - with find and build action
+* Actions - new, edit, destroy
